@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PMDMREC03</string>
+    <string name="labelInicio">Autentificación de usuario</string>
+    <string name="buttonInvitado">Loguearse como invitado</string>
+    <string name="buttonAdmin">Loguearse como administrador</string>
+    <string name="buttonRegistro">Registrarse ya</string>
+</resources>
