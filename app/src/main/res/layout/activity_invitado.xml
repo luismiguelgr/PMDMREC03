@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".InvitadoActivity">
 
+    <TextView
+        android:id="@+id/labelActivityInvitado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Has llegado"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="140dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

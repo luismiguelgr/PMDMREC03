@@ -44,7 +44,7 @@ public class Persistencia extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_persistencia);
-        xestionarEventos();
+        setContentView(R.layout.activity_main);
+        consultas();
     }
 }
