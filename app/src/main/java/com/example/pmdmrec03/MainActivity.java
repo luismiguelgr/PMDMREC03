@@ -82,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
         btnRegistro.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), RegistroActivity.class);
+                startActivity(intent);
+                /*
                 if(db != null){
                     //db.execSQL("INSERT INTO usuarios (usuario, contrasena) VALUES ('miguel', 'abc')");
                     ContentValues cv = new ContentValues();
@@ -96,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     cv.put("fase", 0);
                     db.insert("provincias", null, cv);
                 }
-
+*/
                 //Toast.makeText(getApplicationContext(),"Has entrado como invitado", Toast.LENGTH_SHORT).show();
             }
         });

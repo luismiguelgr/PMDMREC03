@@ -5,10 +5,16 @@ public class Usuario {
     int id;
     String usuario;
     String contrasena;
+    String nombre;
+    String apellidos;
+    String email;
 
-    public Usuario(String usuario,String contrasena){
+    public Usuario(String usuario,String contrasena,String nombre,String apellidos,String email){
         this.usuario=usuario;
         this.contrasena=contrasena;
+        this.nombre=nombre;
+        this.apellidos=apellidos;
+        this.email=email;
     }
 
     @Override
@@ -38,5 +44,29 @@ public class Usuario {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

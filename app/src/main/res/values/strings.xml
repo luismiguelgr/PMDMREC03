@@ -8,4 +8,16 @@
     <string name="labelCampoContrasena">Contraseña:</string>
     <string name="textCampoUsuario">nombre del usuario</string>
     <string name="textCampoContrasena">contraseña del usuario</string>
+    <string name="labelRegistroTitulo">Registro de usuario</string>
+    <string name="labelRegistroNombre">Nombre:</string>
+    <string name="textRegistroNombre">nombre</string>
+    <string name="labelRegistroApellidos">Apellidos:</string>
+    <string name="textRegistroApellidos">apellidos</string>
+    <string name="labelRegistroEmail">Email:</string>
+    <string name="textRegistroEmail">email</string>
+    <string name="labelRegistroUsuario">Usuario:</string>
+    <string name="textRegistroUsuario">usuario</string>
+    <string name="labelRegistroContrasena">Contraseña:</string>
+    <string name="textRegistroContrasena">contraseña</string>
+    <string name="botonRegistrarse">Registrarse</string>
 </resources>
