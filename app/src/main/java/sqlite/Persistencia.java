@@ -11,40 +11,41 @@ import com.example.pmdmrec03.R;
 
 public class Persistencia extends AppCompatActivity {
 
-    private BaseDatos baseDatos;
+    private MyOpenHelper myOpenHelper;
     private SQLiteDatabase consultas;
-
-    private void consultas(){
+/*
+    private void insertarDatos(){
         findViewById(R.id.buttonInvitado).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (baseDatos==null){
-                    baseDatos = new BaseDatos(getApplicationContext());
-                    SQLiteDatabase consultas = baseDatos.getWritableDatabase();
-                    baseDatos.setSQLiteDatabase(consultas);
-
-                    Toast.makeText(getApplicationContext(), "Bd abierta", Toast.LENGTH_LONG).show();
-                }
+            if (myOpenHelper ==null){
+                myOpenHelper = new MyOpenHelper(getApplicationContext());
+                SQLiteDatabase consultas = myOpenHelper.getWritableDatabase();
+                myOpenHelper.setSQLiteDatabase(consultas);
+                myOpenHelper.insertarUsuario("miguel", "abc");
+                Toast.makeText(getApplicationContext(), "Bd abierta", Toast.LENGTH_LONG).show();
+            }
             }
         });
 
-        findViewById(R.id.buttonAdmin)
-            .setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (baseDatos!=null){
-                        baseDatos.close();
-                        baseDatos = null;
-                        Toast.makeText(getApplicationContext(),"BD cerrada",Toast.LENGTH_SHORT).show();
-                    }
+        findViewById(R.id.buttonAdmin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myOpenHelper !=null){
+                    myOpenHelper.close();
+                    myOpenHelper = null;
+                    Toast.makeText(getApplicationContext(),"BD cerrada",Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        consultas();
+        insertarDatos();
     }
+
+ */
 }

@@ -6,15 +6,14 @@ public class Usuario {
     String usuario;
     String contrasena;
 
-    public Usuario(int id,String usuario,String contrasena){
-        this.id=id;
+    public Usuario(String usuario,String contrasena){
         this.usuario=usuario;
         this.contrasena=contrasena;
     }
 
     @Override
     public String toString() {
-        return this.usuario;
+        return this.usuario + ":" + this.contrasena;
     }
 
     public int getId() {
