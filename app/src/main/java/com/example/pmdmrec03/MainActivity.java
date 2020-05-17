@@ -7,8 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import sqlite.BaseDatos;
+import sqlite.Usuario;
+
 public class MainActivity extends AppCompatActivity {
 
+    private BaseDatos bd;
     Button  btnInvitado;
     Button  btnAdmin;
     Button  btnRegistro;
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         btnInvitado.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Usuario u = new Usuario(1, "miguel", "abc");
+                bd.insertar(u.getUsuario(), u.getContrasena());
                 Toast.makeText(getApplicationContext(),"Has entrado como invitado", Toast.LENGTH_SHORT).show();
             }
         });

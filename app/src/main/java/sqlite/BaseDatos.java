@@ -1,5 +1,6 @@
 package sqlite;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,7 +11,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 
     public final static String NOMBRE_BD="PMDMREC03";
     public final static int VERSION_BD=1;
-    private SQLiteDatabase consultas;
+    private SQLiteDatabase db;
 
     private String CREAR_TABLA_USUARIOS ="CREATE TABLE usuarios (id  INTEGER PRIMARY KEY AUTOINCREMENT, usuario VARCHAR(50) NOT NULL, contrasena VARCHAR(40) NOT NULL)";
 
@@ -29,7 +30,15 @@ public class BaseDatos extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void setSQLiteDatabase(SQLiteDatabase consultas){
-        this.consultas = consultas;
+    public void setSQLiteDatabase(SQLiteDatabase db){
+        this.db = db;
     }
+
+    public void insertar(String usuario,String contrasena){
+        ContentValues cv = new ContentValues();
+        cv.put("usuario", usuario);
+        cv.put("contrasena", contrasena);
+        db.insert("usuarios", null, cv);
+    }
+
 }
