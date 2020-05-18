@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import sqlite.MyOpenHelper;
+import sqlite.Usuario;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -53,21 +54,25 @@ public class RegistroActivity extends AppCompatActivity {
                 if(existeUsuario(tUsuario)){
                     Toast.makeText(getApplicationContext(), "El usuario ya existe", Toast.LENGTH_SHORT).show();
                 }else{
-                    if (db != null) {
-                        ContentValues cv = new ContentValues();
-                        cv.put("nombre", tNombre);
-                        cv.put("apellidos", tApellidos);
-                        cv.put("email", tEmail);
-                        cv.put("usuario", tUsuario);
-                        cv.put("contrasena", tContrasena);
-                        db.insert("usuarios", null, cv);
-                        Intent intent = new Intent(v.getContext(), MainActivity.class);
-                        startActivity(intent);
-                        textNombre.setText("");
-                        textApellidos.setText("");
-                        textEmail.setText("");
-                        textUsuario.setText("");
-                        textContrasena.setText("");
+                    if(tUsuario.isEmpty() || tNombre.isEmpty() || tContrasena.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Los campos de usuario,nombre y contraseña deben rellenarse", Toast.LENGTH_SHORT).show();
+                    }else{
+                        if (db != null) {
+                            ContentValues cv = new ContentValues();
+                            cv.put("nombre", tNombre);
+                            cv.put("apellidos", tApellidos);
+                            cv.put("email", tEmail);
+                            cv.put("usuario", tUsuario);
+                            cv.put("contrasena", tContrasena);
+                            db.insert("usuarios", null, cv);
+                            Intent intent = new Intent(v.getContext(), MainActivity.class);
+                            startActivity(intent);
+                            textNombre.setText("");
+                            textApellidos.setText("");
+                            textEmail.setText("");
+                            textUsuario.setText("");
+                            textContrasena.setText("");
+                        }
                     }
                 }
             }

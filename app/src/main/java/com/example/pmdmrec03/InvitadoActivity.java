@@ -6,7 +6,10 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +24,8 @@ public class InvitadoActivity extends AppCompatActivity {
     private MyOpenHelper dbHelper;
     SQLiteDatabase db;
     Spinner spinnerUsuarios;
+    ListView listview;
+    ArrayList<Provincia> lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +36,10 @@ public class InvitadoActivity extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         spinnerUsuarios = (Spinner) findViewById(R.id.spinnerInvitadoUsuarios);
+        listview = (ListView) findViewById(R.id.listViewInvitado);
 
 
-
-        ArrayList<Provincia> lista = new ArrayList<Provincia>();
+         lista = new ArrayList<Provincia>();
         Cursor c = db.rawQuery("SELECT * FROM provincias ", null);
 
         if (c.moveToFirst()) {
@@ -46,11 +51,24 @@ public class InvitadoActivity extends AppCompatActivity {
                 c.moveToNext();
             }
         }
+        ArrayAdapter<Provincia> adapter = new ArrayAdapter<Provincia>(this, android.R.layout.simple_list_item_1, lista);
+
+        listview.setAdapter(adapter);
+
+        list = new ArrayList<String>(Arrays.asList("111,222,333,444,555,666".split(",")));
+        listview.setAdapter(new MyCustomAdapter(list, context) );
 
 
-        ArrayAdapter<Provincia> adapter = new ArrayAdapter<Provincia>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, lista);
-        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-        spinnerUsuarios.setAdapter(adapter);
+                Toast.makeText(InvitadoActivity.this, "Has pulsado: "+ lista.get(position), Toast.LENGTH_LONG).show();
+            }
+        });
+        //ArrayAdapter<Provincia> adapter = new ArrayAdapter<Provincia>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, lista);
+        //adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+        //spinnerUsuarios.setAdapter(adapter);
     }
 }

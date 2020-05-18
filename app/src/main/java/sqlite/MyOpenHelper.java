@@ -13,7 +13,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     // CREATES
     private String CREAR_TABLA_PROVINCIAS = "CREATE TABLE provincias (id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , nombre VARCHAR(50) NOT NULL, fase INTEGER)";
-    private String CREAR_TABLA_USUARIOS = "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , usuario VARCHAR(50) NOT NULL, contrasena VARCHAR(40) NOT NULL)";
+    private String CREAR_TABLA_USUARIOS = "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , usuario VARCHAR(50) NOT NULL, contrasena VARCHAR(40) NOT NULL, nombre VARCHAR(100) NOT NULL, apellidos VARCHAR(150), email VARCHAR(200))";
     // INSERTS
     private String INSERTAR_DATOS_USUARIOS = "INSERT INTO usuarios (usuario, contrasena) VALUES ('miguel', 'abc')";
     private String INSERTAR_DATOS_PROVINCIAS = "INSERT INTO provincias (nombre, fase) VALUES ('Lugo', 1), ('Ourense', 0), ('A Coruña', 2), ('Pontevedra', 0)";
@@ -30,7 +30,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREAR_TABLA_USUARIOS);
         db.execSQL(CREAR_TABLA_PROVINCIAS);
-        db.execSQL(INSERTAR_DATOS_USUARIOS);
+        //db.execSQL(INSERTAR_DATOS_USUARIOS);
         db.execSQL(INSERTAR_DATOS_PROVINCIAS);
     }
 
