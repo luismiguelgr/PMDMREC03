@@ -4,9 +4,9 @@ public class Provincia {
 
     int id;
     String nombre;
-    String fase;
+    int fase;
 
-    public Provincia(String nombre,String fase){
+    public Provincia(String nombre,int fase){
         this.nombre=nombre;
         this.fase=fase;
     }
@@ -32,11 +32,11 @@ public class Provincia {
         this.nombre = nombre;
     }
 
-    public String getFase() {
+    public int getFase() {
         return this.fase;
     }
 
-    public void setFase(String fase) {
+    public void setFase(int fase) {
         this.fase = fase;
     }
 }

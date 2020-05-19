@@ -3,6 +3,7 @@ package com.example.pmdmrec03;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class InvitadoActivity extends AppCompatActivity {
     private MyOpenHelper dbHelper;
     SQLiteDatabase db;
     Spinner spinnerUsuarios;
-    ListView listview;
+    ListView listView;
     ArrayList<Provincia> lista;
 
     @Override
@@ -36,21 +37,28 @@ public class InvitadoActivity extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         spinnerUsuarios = (Spinner) findViewById(R.id.spinnerInvitadoUsuarios);
-        listview = (ListView) findViewById(R.id.listViewInvitado);
+        listView = (ListView) findViewById(R.id.listViewInvitado);
 
 
-         lista = new ArrayList<Provincia>();
+        lista = new ArrayList<Provincia>();
         Cursor c = db.rawQuery("SELECT * FROM provincias ", null);
 
         if (c.moveToFirst()) {
 
             while (!c.isAfterLast()) {
                 String nombre = c.getString(c.getColumnIndex("nombre"));
-                String fase = c.getString(c.getColumnIndex("fase"));
+                int fase = c.getInt(c.getColumnIndex("fase"));
                 lista.add(new Provincia(nombre, fase));
                 c.moveToNext();
             }
         }
+
+        MyAdapter myAdapter = new MyAdapter(this, R.layout.lista_provincias, lista);
+        listView.setAdapter(myAdapter);
+
+    }
+}
+        /*
         ArrayAdapter<Provincia> adapter = new ArrayAdapter<Provincia>(this, android.R.layout.simple_list_item_1, lista);
 
         listview.setAdapter(adapter);
@@ -66,9 +74,11 @@ public class InvitadoActivity extends AppCompatActivity {
                 Toast.makeText(InvitadoActivity.this, "Has pulsado: "+ lista.get(position), Toast.LENGTH_LONG).show();
             }
         });
+        */
+
         //ArrayAdapter<Provincia> adapter = new ArrayAdapter<Provincia>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, lista);
         //adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
 
         //spinnerUsuarios.setAdapter(adapter);
-    }
-}
+    //}
+

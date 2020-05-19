@@ -1,71 +1,68 @@
 package com.example.pmdmrec03;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter implements ListAdapter {
-    private ArrayList<String> list = new ArrayList<String>();
-    private Context context;
+import sqlite.Provincia;
 
-    public MyAdapter(ArrayList<String> list, Context context) {
-        this.list = list;
+public class MyAdapter extends BaseAdapter {
+    private Context context;
+    private int layout;
+    private ArrayList<Provincia> names;
+
+    public MyAdapter(Context context, int layout, ArrayList<Provincia> names) {
         this.context = context;
+        this.layout = layout;
+        this.names = names;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return this.names.size();
     }
 
     @Override
-    public Object getItem(int pos) {
-        return list.get(pos);
+    public Object getItem(int position) {
+        return this.names.get(position);
     }
 
     @Override
-    public long getItemId(int pos) {
-        return list.get(pos).getId();
+    public long getItemId(int id) {
+        return id;
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.CustomLayout, null);
-        }
 
-        //Handle TextView and display string from your list
-        TextView tvContact= (TextView)view.findViewById(R.id.tvContact);
-        tvContact.setText(list.get(position));
+    public View getView(int position, View convertView, ViewGroup viewGroup) {
+        // Copiamos la vista
+        View v = convertView;
 
-        //Handle buttons and add onClickListeners
-        Button callbtn= (Button)view.findViewById(R.id.btn);
+        //Inflamos la vista con nuestro propio layout
+        LayoutInflater layoutInflater = LayoutInflater.from(this.context);
 
-        callbtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //do something
+        v = layoutInflater.inflate(R.layout.lista_provincias, null);
+        // Valor actual según la posición
 
-            }
-        });
-        addBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //do something
-                notifyDataSetChanged();
+        Provincia currentName = names.get(position);
 
-            }
-        });
+        // Referenciamos el elemento a modificar y lo rellenamos
+        TextView textView = (TextView) v.findViewById(R.id.textListaProvincias);
+        textView.setText(currentName.getNombre() + ' ' + currentName.getFase());
 
-        return view;
+
+        //Devolvemos la vista inflada
+        return v;
     }
 }
