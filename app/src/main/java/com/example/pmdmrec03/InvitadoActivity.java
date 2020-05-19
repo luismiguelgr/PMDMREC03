@@ -56,6 +56,13 @@ public class InvitadoActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter(this, R.layout.lista_provincias, lista);
         listView.setAdapter(myAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Toast.makeText(InvitadoActivity.this, "Has pulsado: "+ lista.get(position), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }
         /*
