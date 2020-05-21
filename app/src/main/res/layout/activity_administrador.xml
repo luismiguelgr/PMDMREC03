@@ -6,11 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".AdministradorActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/buttonAdminEngadirFase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="178dp"
-        tools:layout_editor_absoluteY="136dp" />
+        android:layout_marginTop="96dp"
+        android:text="@string/buttonAdminEngadirFase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAdminSeleccionarFase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/buttonAdminSeleccionarFase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAdminEngadirFase" />
 </androidx.constraintlayout.widget.ConstraintLayout>

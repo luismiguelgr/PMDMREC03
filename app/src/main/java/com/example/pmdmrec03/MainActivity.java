@@ -2,19 +2,15 @@ package com.example.pmdmrec03;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 
 import sqlite.MyOpenHelper;
 
@@ -22,12 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private MyOpenHelper dbHelper;
     SQLiteDatabase db;
-    Button  btnInvitado;
-    Button  btnAdmin;
-    Button  btnRegistro;
-    Spinner spinnerUsuarios;
-    EditText textUsuario;
-    EditText textContrasena;
+    Button  btnInvitado, btnAdmin, btnRegistro;
+    EditText textUsuario, textContrasena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         btnInvitado = (Button) findViewById(R.id.buttonInvitado);
         btnAdmin = (Button) findViewById(R.id.buttonAdmin);
         btnRegistro = (Button) findViewById(R.id.buttonRegistro);
-        spinnerUsuarios = (Spinner) findViewById(R.id.spinnerInvitadoUsuarios);
         textContrasena = (EditText) findViewById(R.id.textContrasena);
         textUsuario = (EditText) findViewById(R.id.textUsuario);
 
@@ -84,28 +75,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), RegistroActivity.class);
                 startActivity(intent);
-                /*
-                if(db != null){
-                    //db.execSQL("INSERT INTO usuarios (usuario, contrasena) VALUES ('miguel', 'abc')");
-                    ContentValues cv = new ContentValues();
-                    cv.put("usuario", "paula");
-                    cv.put("contrasena", "bsg");
-                    db.insert("usuarios", null, cv);
-                }
-                if(db != null){
-                    //db.execSQL("INSERT INTO usuarios (usuario, contrasena) VALUES ('miguel', 'abc')");
-                    ContentValues cv = new ContentValues();
-                    cv.put("nombre", "Lugo");
-                    cv.put("fase", 0);
-                    db.insert("provincias", null, cv);
-                }
-*/
-                //Toast.makeText(getApplicationContext(),"Has entrado como invitado", Toast.LENGTH_SHORT).show();
+
             }
         });
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 
 }

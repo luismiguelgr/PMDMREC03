@@ -13,19 +13,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import sqlite.MyOpenHelper;
-import sqlite.Usuario;
-
 public class RegistroActivity extends AppCompatActivity {
 
     private MyOpenHelper dbHelper;
     SQLiteDatabase db;
     Button btnRegistrarse;
-    EditText textNombre;
-    EditText textApellidos;
-    EditText textEmail;
-    EditText textUsuario;
-    EditText textContrasena;
-
+    EditText textNombre, textApellidos, textEmail, textUsuario, textContrasena;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,5 +87,11 @@ public class RegistroActivity extends AppCompatActivity {
             }
         }
         return existe;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 }

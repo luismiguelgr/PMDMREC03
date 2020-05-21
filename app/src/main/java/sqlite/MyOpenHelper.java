@@ -1,6 +1,5 @@
 package sqlite;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -15,8 +14,8 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     private String CREAR_TABLA_PROVINCIAS = "CREATE TABLE provincias (id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , nombre VARCHAR(50) NOT NULL, fase INTEGER)";
     private String CREAR_TABLA_USUARIOS = "CREATE TABLE usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , usuario VARCHAR(50) NOT NULL, contrasena VARCHAR(40) NOT NULL, nombre VARCHAR(100) NOT NULL, apellidos VARCHAR(150), email VARCHAR(200))";
     // INSERTS
-    private String INSERTAR_DATOS_USUARIOS = "INSERT INTO usuarios (usuario, contrasena) VALUES ('miguel', 'abc')";
-    private String INSERTAR_DATOS_PROVINCIAS = "INSERT INTO provincias (nombre, fase) VALUES ('Lugo', 1), ('Ourense', 0), ('A Coruña', 2), ('Pontevedra', 0)";
+    private String INSERTAR_DATOS_USUARIOS = "INSERT INTO usuarios (usuario, contrasena, nombre, apellidos, email) VALUES ('miguel', 'abc', 'Luis Miguel', 'García Rodríguez', 'luismiguelgr@gmx.es')";
+    private String INSERTAR_DATOS_PROVINCIAS = "INSERT INTO provincias (nombre, fase) VALUES ('Lugo', 1), ('Ourense', 2), ('A Coruña', null), ('Pontevedra', null)";
 
     public MyOpenHelper(Context context) {
         super(context, NOMBRE_BD, null, VERSION_BD);
@@ -30,7 +29,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREAR_TABLA_USUARIOS);
         db.execSQL(CREAR_TABLA_PROVINCIAS);
-        //db.execSQL(INSERTAR_DATOS_USUARIOS);
+        db.execSQL(INSERTAR_DATOS_USUARIOS);
         db.execSQL(INSERTAR_DATOS_PROVINCIAS);
     }
 
@@ -40,14 +39,5 @@ public class MyOpenHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS provincias");
         onCreate(db);
     }
-
-    public void insertarUsuario(String usuario,String contrasena){
-        //db.execSQL("INSERT INTO usuarios (usuario, contrasena) VALUES ('miguel', 'abc')");
-        ContentValues cv = new ContentValues();
-        cv.put("usuario", usuario);
-        cv.put("contrasena", contrasena);
-        db.insert("usuarios", null, cv);
-    }
-
 
 }
