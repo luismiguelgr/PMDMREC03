@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegistroActivity"></activity>
+        <activity android:name=".PontevedraActivity"></activity>
+        <activity android:name=".LugoActivity" />
+        <activity android:name=".OurenseActivity" />
+        <activity android:name=".CorunaActivity" />
+        <activity android:name=".RegistroActivity" />
         <activity android:name=".AdministradorActivity" />
         <activity android:name=".InvitadoActivity" />
         <activity android:name=".MainActivity">
